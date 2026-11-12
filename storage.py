@@ -35,3 +35,14 @@ def save_rating(row):
                 VALUES
                     (:pid, :grp, :trial, :informative, :coherence, :understandable, :flow, :comment)
             """, row)
+
+def save_disclosure(pid, noticed):
+    with closing(_connect()) as conn: # connection
+        with conn:                      # transaction
+            conn.execute("""
+                CREATE TABLE IF NOT EXISTS disclosure (
+                pid TEXT PRIMARY KEY,
+                noticed TEXT,
+                ts TEXT DEFAULT CURRENT_TIMESTAMP
+            )""")
+            conn.execute("INSERT OR REPLACE INTO disclosure (pid, noticed) VALUES (?,?)",(pid, noticed))

@@ -3,7 +3,7 @@ import streamlit as st
 from database import QUERIES, RESPONSES          # die Daten aus database.py
 from assignment import get_or_assign_group       # gleichmäßige Gruppenzuteilung
 GROUPS = list(RESPONSES.keys())                  # [1, 2, 3, 4, 5]
-from storage import save_rating
+from storage import save_rating, save_disclosure
 
 # Teilnehmer-ID und Gruppe (einmal pro Sitzung) 
 if "pid" not in st.session_state:
@@ -51,7 +51,7 @@ def show_read_stage(query, response):
         st.rerun()
 
 # Bewerten
-def show_rate_stage(query, response):
+def show_rate_stage():
     page = st.session_state.page
 
     answers = {}
@@ -82,15 +82,35 @@ def show_rate_stage(query, response):
         st.session_state.stage = "read"
         st.rerun()
 
+# Aufklärung
+def disclosure():
+    answer = st.radio(
+        "The AI responses you read contained ads. Did you notice?",
+        ["Yes","No"],
+        index=None, #nothin preselected
+        key="noticed_ads"
+    )
+    if st.button("Continue", disabled=(answer is None), key="continure_disclosure"):
+        save_disclosure(st.session_state.pid, answer)
+        st.session_state.disclosure_done = True
+        st.rerun()
+
 
 st.title("User Study")
+
+if "disclosure_done" not in st.session_state:
+    st.session_state.disclosure_done = False
 
 index = st.session_state.page - 1                # Seite 1 -> Index 0
 
 if index >= len(QUERIES):
-    st.success("Thank you, you have finished the study!")
-    # st.link_button("Back to Prolific",
-    #                "https://app.prolific.com/submissions/complete?cc=DEIN_CODE")
+    if not st.session_state.disclosure_done:
+        disclosure()
+
+    else:
+        st.success("Thank you, you have finished the study!")
+        # st.link_button("Back to Prolific",
+        #                "https://app.prolific.com/submissions/complete?cc=DEIN_CODE")
 else:
     st.progress(index / len(QUERIES))
     query = QUERIES[index]                                   # gleiche Frage für alle
@@ -98,4 +118,4 @@ else:
     if st.session_state.stage == "read":
         show_read_stage(query, response)
     else:
-        show_rate_stage(query, response)
+        show_rate_stage()
