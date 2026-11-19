@@ -16,3 +16,6 @@ each comment with "pilot" is an instruction on what to change after the pilot st
 getting a csv of the results:
 stop the app, than run:
 python -c "import sqlite3, pandas as pd; pd.read_sql('SELECT * FROM ratings', sqlite3.connect('assignments.db')).to_csv('ratings.csv', index=False)"
+
+setup:
+py -m pip install streamlit-sortables

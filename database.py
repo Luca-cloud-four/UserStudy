@@ -77,3 +77,116 @@ RESPONSES = {
         "Group 4 response to query 2 ...", "Group 4 response to query 3 ...", "Group 4 response to query 4 ...", "Group 4 response to query 5 ...", "Group 4 response to query 6 ...", "Group 4 response to query 7 ...", "Group 4 response to query 8 ...", "Group 4 response to query 9 ...", "Group 4 response to query 10 ...", "Group 4 response to query 11 ...", "Group 4 response to query 12 ...", "Group 4 response to query 13 ...", "Group 4 response to query 14 ...", "Group 4 response to query 15 ...", "Group 4 response to query 16 ...", "Group 4 response to query 17 ...", "Group_4_response_to_query_18_...", "Group_4_response_to_query_19_...", "Group_4_response_to_query_20_..." ],
     5: [ "Group 5 response to query 1 ...", 
         "Group_5_response_to_query_2_...", "Group_5_response_to_query_3_...", "Group_5_response_to_query_4_...", "Group_5_response_to_query_5_...", "Group_5_response_to_query_6_...", "Group_5_response_to_query_7_...", "Group_5_response_to_query_8_...", "Group_5_response_to_query_9_...", "Group_5_response_to_query_10_...", "Group_5_response_to_query_11_...", "Group_5_response_to_query_12_...", "Group_5_response_to_query_13_...", "Group_5_response_to_query_14_...", "Group_5_response_to_query_15_...", "Group_5_response_to_query_16_...", "Group_5_response_to_query_17_...", "Group_5_response_to_query_18_...", "Group_5_response_to_query_19_...", "Group_5_response_to_query_20_..." ]}
+
+RANKING_TASKS = [
+    {
+        "instruction": "Query: round 1",  # NEW: round 1 instruction
+        "responses": [                          
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+    {
+        "instruction": "Query: round 2", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 3", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 4", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 5", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 6", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 7", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 8", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 9", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    },
+        {
+        "instruction": "Query: round 10", 
+        "responses": [
+            "Response text 1 ...",
+            "Response text 2 ...",
+            "Response text 3 ...",
+            "Response text 4 ...",
+            "Response text 5 ...",
+            "Response text 6 ...",
+        ],
+    }
+]
