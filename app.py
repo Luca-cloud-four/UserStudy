@@ -8,15 +8,12 @@ from assignment import get_or_assign_group
 
 # debug =========================================
 
-from storage import get_client, save_disclosure
+from storage import save_disclosure
 
 st.subheader("Supabase write test")
 
 try:
-    test_pid = "TEST_CONNECTION_123"
-
-    save_disclosure(test_pid, True)
-
+    save_disclosure("TEST_CONNECTION_123", True)
     st.success("Successfully wrote test data to Supabase!")
 
 except Exception as e:
