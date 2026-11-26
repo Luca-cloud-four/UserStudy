@@ -13,6 +13,8 @@ CMakeUserPresets.json
 ratings.csv
 rankings.csv
 notImportant.py
+Requirements.json
+.streamlit/secrets.toml
 
 # CLion
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
