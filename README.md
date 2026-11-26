@@ -19,3 +19,9 @@ python -c "import sqlite3, pandas as pd; pd.read_sql('SELECT * FROM ratings', sq
 
 setup:
 py -m pip install streamlit-sortables
+
+the link that participants will click on on prolific to get to my study:
+https://userstudy-gbxezjew4zusm9g5upjwlr.streamlit.app/
+
+data is stored:
+on my supabase account
