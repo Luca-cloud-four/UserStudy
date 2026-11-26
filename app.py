@@ -6,6 +6,23 @@ from streamlit_sortables import sort_items
 from database import QUERIES, RESPONSES, RANKING_TASKS
 from assignment import get_or_assign_group
 
+# debug =========================================
+
+from storage import get_client, save_disclosure
+
+st.subheader("Supabase write test")
+
+try:
+    test_pid = "TEST_CONNECTION_123"
+
+    save_disclosure(test_pid, True)
+
+    st.success("Successfully wrote test data to Supabase!")
+
+except Exception as e:
+    st.error(f"Supabase write failed: {e}")
+# debug end ========================================
+
 GROUPS = list(RESPONSES.keys())
 
 from storage import (
