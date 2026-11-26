@@ -36,27 +36,37 @@ def _save(table, data, conflict):                # helper: writes data into a ta
             time.sleep(1)                        # otherwise wait 1 second and try again
 
 
-def save_rating(row):                            # phase 1: row = dictionary with one rating
-    data = dict(row)                             # make a copy so we do not change the original
-    data["ts"] = data.pop("timestamp", None) or get_timestamp()   # the app sends "timestamp"; the table column is called "ts"
-    _save("ratings", data, "pid,trial")          # save it; one rating = participant + trial
+def save_rating(row):
+    data = dict(row)
+    data.pop("timestamp", None)
+    data["created_at"] = get_timestamp()
+
+    _save("ratings", data, "pid,trial")         # save it; one rating = participant + trial
 
 
-def save_ranking(rows):                          # phase 2: rows = list of 6 dictionaries
-    stamp = get_timestamp()                      # one timestamp for all 6 rows
-    data = []                                    # new empty list for the cleaned rows
-    for row in rows:                             # go through the 6 rows
-        r = dict(row)                            # copy the row
-        r.pop("timestamp", None)                 # remove "timestamp" if it is there (the column is called "ts")
-        r["ts"] = stamp                          # add the timestamp under the right name
-        data.append(r)                           # put the row into the new list
-    _save("rankings", data, "pid,trial,shown_position")   # save; one row = participant + round + position
+def save_ranking(rows):
+    stamp = get_timestamp()
+    data = []
+
+    for row in rows:
+        r = dict(row)
+        r.pop("timestamp", None)
+        r["created_at"] = stamp
+        data.append(r)
+
+    _save("rankings", data, "pid,trial,shown_position") # save; one row = participant + round + position
 
 
-def save_disclosure(pid, noticed):               # answer to "Did you notice the ads?"
-    _save("disclosures",                         # table name
-          {"pid": pid, "noticed_ads": noticed, "ts": get_timestamp()},   # the row to save
-          "pid")                                 # one answer per participant
+def save_disclosure(pid, noticed):
+    _save(
+        "disclosures",
+        {
+            "pid": pid,
+            "noticed_ads": noticed,
+            "created_at": get_timestamp()
+        },
+        "pid"
+    )                                # one answer per participant
 
 
 def participant_has_completed(pid):              # True if this participant already finished the study
@@ -68,4 +78,4 @@ def participant_has_completed(pid):              # True if this participant alre
 
 
 def mark_participant_completed(pid):             # remember that this participant finished
-    _save("completed", {"pid": pid, "ts": get_timestamp()}, "pid")   # one row per participant
+    _save("completed", {"pid": pid, "created_at": get_timestamp()}, "pid")   # one row per participant
